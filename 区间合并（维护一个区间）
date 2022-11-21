@@ -1,0 +1,45 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+const int N = 1e5 + 10;
+
+int n;
+typedef pair<int, int> PII;
+vector<PII> a;
+void m(vector<PII> &a)
+{
+    vector<PII> b;
+    int st = -2e9, ed = -2e9;
+    sort(a.begin(), a.end());
+    for(auto item : a)
+    {
+        if(ed < item.first)
+        {
+            if(st != -2e9) b.push_back({st, ed});
+            st = item.first, ed = item.second;
+            
+        }
+        else 
+        {
+            ed = max(ed, item.second);
+        }
+    }
+    if(st != -2e9 && ed != -2e9) b.push_back({st, ed});
+    a = b;
+}
+
+int main()
+{
+    cin >> n;
+    for(int i = 0; i < n; i ++)
+    {
+        int l, r;
+        cin >> l >> r;
+        a.push_back({l, r});
+    }
+    m(a);
+    cout << a.size() << endl;
+    return 0;
+}
