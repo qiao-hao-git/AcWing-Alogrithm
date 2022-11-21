@@ -1,0 +1,57 @@
+#include<iostream>
+
+using namespace std;
+
+const int N = 1e5 + 10;
+
+int e[N], ne[N];
+int head = -1, inx = 0;
+
+void insert(int x)
+{
+    e[inx] = x;
+    ne[inx] = head;
+    head = inx ++;
+}
+
+void delete_k(int k)
+{
+    ne[k] = ne[ne[k]];    
+}
+
+void add(int k, int x)
+{
+    e[inx] = x;
+    ne[inx] = ne[k];
+    ne[k] = inx ++;
+}
+
+int main()
+{
+    int m;
+    
+    cin >> m;
+    char c;
+    while(m --)
+    {
+        cin >> c;
+        int k, x;
+        if(c == 'H')
+        {
+            cin >> x;
+            insert(x);
+        }
+        else if(c == 'D'){
+            cin >> k;
+            if(!k) head = ne[head];
+            delete_k(k - 1);
+        }
+        else
+        {
+            cin >> k >> x;
+            add(k - 1, x);
+        }
+    }
+    for(int i = head; i != -1; i = ne[i]) cout << e[i] << ' ';
+    return 0;
+}
