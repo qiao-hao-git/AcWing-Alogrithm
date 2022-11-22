@@ -1,0 +1,38 @@
+#include <iostream>
+
+using namespace std;
+
+const int N = 1e5 + 10;
+
+int stk[N], tt;
+
+int m, k, x;
+
+int main()
+{
+    cin >> m;
+    while(m -- )
+    {
+        string c;
+        cin >> c;
+        if(c == "push")
+        {
+            cin >> x;
+            stk[ ++ tt] = x;
+        }
+        else if(c == "pop")
+        {
+            tt --;
+        }
+        else if(c == "empty")
+        {
+            if(tt == 0) cout << "YES" << endl;
+            else cout << "NO" << endl;
+        }
+        else
+        {
+            cout << stk[tt] << endl;
+        }
+    }
+    return 0;
+}
