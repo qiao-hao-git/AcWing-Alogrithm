@@ -1,0 +1,35 @@
+#include <iostream>
+
+using namespace std;
+
+const int N = 1e5 + 10;
+
+int q[N];
+
+int m, x;
+
+int top, tail = -1;
+
+string s;
+
+int main()
+{
+    cin >> m;
+    while(m -- )
+    {
+        cin >> s;
+        if(s == "push")
+        {
+            cin >> x;
+            q[++tail] = x;
+        }
+        else if(s == "pop") top ++;
+        else if(s == "empty") 
+        {
+            if(top > tail) cout << "YES" << endl;
+            else cout << "NO" << endl;
+        }
+        else cout << q[top] << endl;
+    }
+    return 0;
+}
