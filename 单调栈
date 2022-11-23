@@ -1,0 +1,26 @@
+#include <iostream>
+
+using namespace std;
+
+const int N = 1e5 + 10;
+int top;
+int s[N];
+
+int main()
+{
+    int n;
+    cin >> n;
+    while(n --)
+    {
+        int i;
+        cin >> i;
+        while(s[top] >= i)
+        {
+            top --;
+        }
+        if(top != 0) cout << s[top] << " ";
+        else cout << "-1" << " ";
+        s[++top] = i;
+    }
+    return 0;
+}
