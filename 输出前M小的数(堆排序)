@@ -1,0 +1,34 @@
+#include <iostream>
+
+using namespace std;
+
+const int N = 1e5 + 10;
+int n, m, se;
+int a[N];
+
+void down(int x)
+{
+    int t = x;
+    if(x * 2 <= se && a[x * 2] < a[t]) t = 2 * x;
+    if(x * 2 + 1 <= se && a[x * 2 + 1] < a[t]) t = 2 * x + 1;
+    if(t != x)
+    {
+        swap(a[x], a[t]);
+        down(t);
+    }
+}
+int main()
+{
+    scanf("%d%d", &n, &m);
+    for(int i = 1; i <= n; i ++) scanf("%d", &a[i]);
+    se = n;
+    for(int i = n / 2; i >= 1; i --) down(i);
+    for(int i = 1; i <= m ; i ++)
+    {
+        cout << a[1] << ' ';
+        a[1] = a[se];
+        down(1);
+        se --;
+    }
+    return 0;
+}
