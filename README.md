@@ -10,6 +10,6 @@
 
 [动态规划](https://github.com/qiao-hao-git/AcWing-Alogrithm/tree/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92)
 
-贪心
+[贪心](https://github.com/qiao-hao-git/AcWing-Alogrithm/tree/%E8%B4%AA%E5%BF%83)
 
 **其余的还没学完，后续会补充**
