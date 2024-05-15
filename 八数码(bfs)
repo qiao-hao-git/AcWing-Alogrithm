@@ -1,0 +1,45 @@
+#include<iostream>
+#include<string>
+#include<unordered_map>
+#include<queue>
+
+using namespace std;
+
+int main() {
+    unordered_map<string, int> m;
+    string s;
+    for(int i = 0; i < 9; i++) {
+        char c;
+        cin >> c;
+        s += c;
+    }
+    m[s] = 0;
+    queue<string> q;
+    q.push(s);
+    int dir[4][2] = {1, 0, -1, 0, 0, 1, 0, -1};
+    while(q.size()) {
+        string t = q.front();
+        q.pop();
+        int distance = m[t];
+        if(t == "12345678x") {
+            cout << distance;
+            return 0;
+        }
+        int pos = t.find('x');
+        int x = pos / 3, y = pos % 3;
+        for(int i = 0; i < 4; i++) {
+            int nx = x + dir[i][0], ny = y + dir[i][1];
+            if(nx < 0 || nx > 2 || ny < 0 || ny > 2) {
+                continue;
+            }
+            swap(t[pos], t[3 * nx + ny]);
+            if(m.find(t) == m.end()) {
+                q.push(t);
+                m[t] = distance + 1;
+            }
+            swap(t[pos], t[3 * nx + ny]);
+        }
+    }
+    cout << -1;
+    return 0;
+}
