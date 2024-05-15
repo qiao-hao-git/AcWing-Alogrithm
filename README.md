@@ -4,7 +4,7 @@
 
 [数据结构](https://github.com/qiao-hao-git/AcWing-Alogrithm/tree/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84)
 
-[搜索与图论]([https://github.com/qiao-hao-git/AcWing-Alogrithm.git](https://github.com/qiao-hao-git/AcWing-Alogrithm/tree/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA))
+[搜索与图论](https://github.com/qiao-hao-git/AcWing-Alogrithm/tree/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA)
 
 数论
 
