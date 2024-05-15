@@ -6,7 +6,7 @@
 
 [搜索与图论](https://github.com/qiao-hao-git/AcWing-Alogrithm/tree/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA)
 
-数论
+[数论](https://github.com/qiao-hao-git/AcWing-Alogrithm/tree/%E8%B4%AA%E5%BF%83)
 
 动态规划
 
