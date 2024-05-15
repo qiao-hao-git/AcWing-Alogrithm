@@ -1,0 +1,43 @@
+#include<iostream>
+#include<cstring>
+#include<algorithm>
+
+using namespace std;
+const int N = 1e4 + 10;
+
+struct Edge{
+    int a, b, c;
+}edge[N];
+int dist[N];
+int backup[N];
+int n, m, k;
+
+void bellman_ford() {
+    memset(dist, 0x3f, sizeof(dist));
+    dist[1] = 0;
+    for(int i = 0; i < k; i++) {
+        memcpy(backup, dist, sizeof(dist));
+        for(int j = 0; j < m; j++) {
+            int a = edge[j].a, b = edge[j].b, c = edge[j].c;
+            dist[b] = min(dist[b], backup[a] + c);
+        }
+    }
+    if(dist[n] > 0x3f3f3f3f / 2) {
+        cout << "impossible";
+    } else {
+        cout << dist[n];
+    }
+}
+
+int main() {
+    cin >> n >> m >> k;
+    for(int i = 0; i < m; i++) {
+        int a, b, c;
+        cin >> a >> b >> c;
+        edge[i].a = a;
+        edge[i].b = b;
+        edge[i].c = c;
+    }
+    bellman_ford();
+    return 0;
+}
