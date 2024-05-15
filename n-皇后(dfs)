@@ -1,0 +1,57 @@
+#include<iostream>
+#include<vector>
+#include<string>
+
+using namespace std;
+vector<vector<string>> res;
+bool isValid(int n, vector<string>& checkboard, int col, int row) {
+    for(int i = 0; i < col; i++) {
+        if(checkboard[row][i] == 'Q') {
+            return false;
+        }
+    }
+    for(int i = 0; i < row; i++) {
+        if(checkboard[i][col] == 'Q') {
+            return false;
+        }
+    }
+    for(int i = row - 1, j = col - 1; i >= 0 && j >= 0; i--, j--) {
+        if(checkboard[i][j] == 'Q') {
+            return false;
+        }
+    }
+    for(int i = row - 1, j = col + 1; i >= 0 && j < n; i--, j++) {
+        if(checkboard[i][j] == 'Q') {
+            return false;
+        }
+    }
+    return true;
+}
+
+void back(vector<string>& checkboard, int row, int n) {
+    if(row == n) {
+        res.push_back(checkboard);
+        return;
+    }
+    for(int i = 0; i < n; i++) {
+        if(isValid(n, checkboard, i, row)) {
+            checkboard[row][i] = 'Q';
+            back(checkboard, row + 1, n);
+            checkboard[row][i] = '.';
+        }
+    }
+}
+
+int main() {
+    int n;
+    scanf("%d", &n);
+    vector<string> checkboard(n, string(n, '.'));
+    back(checkboard, 0, n);
+    for(int i = 0; i < res.size(); i++) {
+        for(int j = 0; j < res[i].size(); j++) {
+            cout << res[i][j] << endl;
+        }
+        cout << endl;
+    }
+    return 0;
+}
