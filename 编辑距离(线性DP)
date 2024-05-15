@@ -1,0 +1,50 @@
+#include<iostream>
+#include<cstring>
+#include<vector>
+#include<string>
+
+const int N = 13, M = 1003;
+char str[M][N];
+int dp[N][N];
+using namespace std;
+
+int distance(char a[], char b[]) {
+    int m = strlen(a + 1), n = strlen(b + 1);
+    for(int i = 0; i <= m; i++) {
+        dp[i][0] = i;
+    }
+    for(int j = 0; j <= n; j++) {
+        dp[0][j] = j;
+    }
+    for(int i = 1; i <= m; i++) {
+        for(int j = 1; j <= n; j++) {
+            if(a[i] == b[j]) {
+                dp[i][j] = dp[i - 1][j - 1];
+            } else {
+                dp[i][j] = min(min(dp[i - 1][j], dp[i][j - 1]), dp[i - 1][j - 1]) + 1;
+            }
+        }
+    }
+    return dp[m][n];
+}
+
+int main() {
+    int n, m;
+    scanf("%d%d", &n, &m);
+    for(int i = 0; i < n; i++) {
+        scanf("%s", str[i] + 1);
+    }
+    while(m--) {
+        char b[N];
+        int x;
+        scanf("%s%d", b + 1, &x);
+        int res = 0;
+        for(int i = 0; i < n; i++) {
+            if(distance(str[i], b) <= x) {
+                res++;
+            }
+        }
+        cout << res << endl;
+    }
+    return 0;
+}
